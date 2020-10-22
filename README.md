@@ -1,6 +1,7 @@
 # expensemonitor
 
 A new Flutter project.
+Under progress. No hope
 
 ## Getting Started
 
