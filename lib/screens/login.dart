@@ -23,6 +23,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isHidden = true;
+  final _passcon = TextEditingController();
+  final _idcon = TextEditingController();
+  bool _validatePass = false;
+   bool _validateid=false;
 
   void _toggleVisibility() {
     setState(() {
@@ -45,11 +49,11 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 20.0,
             ),
-            buildTextField("User id"),
+            builduserid("User id"),
             SizedBox(
               height: 20.0,
             ),
-            buildTextField("Password"),
+            buildpassword("Password"),
             SizedBox(height: 20.0),
             buildButtonLogin(),
             SizedBox(
@@ -84,9 +88,9 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  Widget buildTextField(String hintText) {
+ Widget buildpassword(String hintText) {
     return TextField(
+      controller:  _passcon,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
@@ -97,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(20.0),
         ),
         prefixIcon:
-            hintText == "User id" ? Icon(Icons.email) : Icon(Icons.lock),
+             Icon(Icons.lock),
         suffixIcon: hintText == "Password"
             ? IconButton(
                 onPressed: _toggleVisibility,
@@ -106,18 +110,54 @@ class _LoginPageState extends State<LoginPage> {
                     : Icon(Icons.visibility),
               )
             : null,
+             errorText: _validatePass ? 'Password should not be null.Atleast 8 characters' : null,
       ),
       obscureText: hintText == "Password" ? _isHidden : false,
     );
   }
 
+   Widget builduserid(String hintText) {
+    return TextField(
+        controller: _idcon,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: Colors.grey,
+            fontSize: 16.0,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          prefixIcon: Icon(Icons.email),
+          errorText: _validateid ? 'Enter a user id.' : null,
+        ));
+  }
+
+ 
+
   Widget buildButtonLogin() {
     return RaisedButton(
       onPressed: () {
+         setState(() {
+           if(_idcon.text.isEmpty){
+            _validateid=true;
+          }
+          else{
+            _validateid=false;
+          }
+           if (_passcon.text.isEmpty || _passcon.text.length < 8) {
+            _validatePass = true;
+          } else {
+            _validatePass = false;
+          }
+        if(_validateid==false &&
+         _validatePass==false){
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Homepage()),
-        );
+        );}
+
+        });
       },
       color: Colors.greenAccent,
       elevation: 0,
@@ -132,6 +172,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget buildButtonSignup() {
     return RaisedButton(
       onPressed: () {
+        
+      
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Signuppage()),
@@ -147,3 +189,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+
