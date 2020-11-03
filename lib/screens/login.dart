@@ -1,6 +1,9 @@
 import 'package:expensemonitor/screens/homepage.dart';
 import 'package:expensemonitor/screens/signuppage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Main extends StatefulWidget {
   @override
@@ -26,11 +29,46 @@ class _LoginPageState extends State<LoginPage> {
   final _passcon = TextEditingController();
   final _idcon = TextEditingController();
   bool _validatePass = false;
-   bool _validateid=false;
-
+  bool _validateid = false;
+  bool processing = false;
   void _toggleVisibility() {
     setState(() {
       _isHidden = !_isHidden;
+    });
+  }
+
+  void userSignIn() async {
+    setState(() {
+      processing = true;
+    });
+    var url = "https://expensemonitor.000webhostapp.com/user/signin.php";
+    var data = {
+      "id": _idcon.text,
+      "pass": _passcon.text,
+    };
+
+    var res = await http.post(url, body: data);
+
+    if (jsonDecode(res.body) == "dont have an account") {
+      Fluttertoast.showToast(
+          msg: "Dont have an account,Create an account",
+          toastLength: Toast.LENGTH_SHORT);
+    } else {
+      if (jsonDecode(res.body) == "false") {
+        Fluttertoast.showToast(
+            msg: "incorrect password", toastLength: Toast.LENGTH_SHORT);
+      } else {
+        if (jsonDecode(res.body) == "true") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Homepage()),
+          );
+        }
+      }
+    }
+
+    setState(() {
+      processing = false;
     });
   }
 
@@ -88,9 +126,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
- Widget buildpassword(String hintText) {
+
+  Widget buildpassword(String hintText) {
     return TextField(
-      controller:  _passcon,
+      controller: _passcon,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
@@ -100,8 +139,7 @@ class _LoginPageState extends State<LoginPage> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        prefixIcon:
-             Icon(Icons.lock),
+        prefixIcon: Icon(Icons.lock),
         suffixIcon: hintText == "Password"
             ? IconButton(
                 onPressed: _toggleVisibility,
@@ -110,13 +148,15 @@ class _LoginPageState extends State<LoginPage> {
                     : Icon(Icons.visibility),
               )
             : null,
-             errorText: _validatePass ? 'Password should not be null.Atleast 8 characters' : null,
+        errorText: _validatePass
+            ? 'Password should not be null.Atleast 8 characters'
+            : null,
       ),
       obscureText: hintText == "Password" ? _isHidden : false,
     );
   }
 
-   Widget builduserid(String hintText) {
+  Widget builduserid(String hintText) {
     return TextField(
         controller: _idcon,
         decoration: InputDecoration(
@@ -133,30 +173,23 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 
- 
-
   Widget buildButtonLogin() {
     return RaisedButton(
       onPressed: () {
-         setState(() {
-           if(_idcon.text.isEmpty){
-            _validateid=true;
+        setState(() {
+          if (_idcon.text.isEmpty) {
+            _validateid = true;
+          } else {
+            _validateid = false;
           }
-          else{
-            _validateid=false;
-          }
-           if (_passcon.text.isEmpty || _passcon.text.length < 8) {
+          if (_passcon.text.isEmpty || _passcon.text.length < 8) {
             _validatePass = true;
           } else {
             _validatePass = false;
           }
-        if(_validateid==false &&
-         _validatePass==false){
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Homepage()),
-        );}
-
+          if (_validateid == false && _validatePass == false) {
+            userSignIn();
+          }
         });
       },
       color: Colors.greenAccent,
@@ -172,8 +205,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget buildButtonSignup() {
     return RaisedButton(
       onPressed: () {
-        
-      
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Signuppage()),
