@@ -7,19 +7,14 @@ class Billsplitaddpage extends StatefulWidget {
 
 class _BillsplitaddpageState extends State<Billsplitaddpage> {
   var _categories = [
-    'Finance',
-     'Education',
-    'Groceries',
-    'Food & Restaurants',
+   'Food & Restaurants',
+    'Transportation',
     'Health',
     'Entertainment',
     'Shopping',
-    'Home & Utilities',
-    'Electricity Bill',
-    'Water Bill',
     'Others'
   ];
-  var _currentitemselected = 'Finance';
+  var _currentitemselected = 'Entertainment';
   final _billamtcon = TextEditingController();
 
   @override
