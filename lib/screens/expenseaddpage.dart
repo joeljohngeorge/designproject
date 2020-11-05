@@ -11,6 +11,7 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
      'Education',
     'Groceries',
     'Food & Restaurants',
+    'Transportation',
     'Health',
     'Entertainment',
     'Shopping',
