@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class Alert1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
