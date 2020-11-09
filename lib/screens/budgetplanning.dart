@@ -22,6 +22,13 @@ class _BudgetplanningState extends State<Budgetplanning> {
     'Others'
   ];
   var _currentitemselected = 'Finance';
+ final formKey = GlobalKey<FormState>(); 
+
+    void _submit2() {
+     final form = formKey.currentState; 
+      if (form.validate()) {
+         form.save(); 
+          }}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +41,12 @@ class _BudgetplanningState extends State<Budgetplanning> {
       )),
       body: SingleChildScrollView(
               child: Container(
-          height: 600,
+          height: 2000,
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
+              key:formKey,
               child: Column(children: [
                 TextFormField(
                   style: TextStyle(fontSize: 22),
@@ -48,8 +56,12 @@ class _BudgetplanningState extends State<Budgetplanning> {
                       labelStyle: TextStyle(fontSize: 16)),
                   keyboardType: TextInputType.number,
                   controller: _incomecon,
+                  
                 ),
+                
+                SizedBox(height: 30),
                 DropdownButton<String>(
+                  
                   items: _categories.map((String dropDownStringItem) {
                     return DropdownMenuItem<String>(
                       value: dropDownStringItem,
@@ -64,19 +76,30 @@ class _BudgetplanningState extends State<Budgetplanning> {
                 TextFormField(
                   style: TextStyle(fontSize: 22),
                   decoration: const InputDecoration(
-                      
+                      icon: Icon(Icons.category),
                       labelText: 'Enter estimated percentage',
                       labelStyle: TextStyle(fontSize: 16)),
                   controller: _percentagecon,
                   keyboardType: TextInputType.number,
+                   validator: (val) {
+                  Pattern pattern = r'^[1-9]\d*(\.\d+)?$';
+                  RegExp regex = new RegExp(pattern);
+                  if (!regex.hasMatch(val))
+                    return 'Enter a valid number';
+                  else
+                    return null;}
                 ),
                 SizedBox(height: 30),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _submit2();
+                  },
                   child: new Text('Submit'),
                 ),
                 SizedBox(height: 30),
-                DataTable(columns: <DataColumn>[
+                 
+                DataTable(
+                  columns: <DataColumn>[
                   DataColumn(
                     label: Text(
                       'Category',
@@ -97,8 +120,9 @@ class _BudgetplanningState extends State<Budgetplanning> {
                         DataCell(Text('10')),
                       ]),
                     ]),
-              ]),
-            ),
+               ]),
+                   ),
+           
           ),
         ),
       ),
@@ -111,3 +135,5 @@ class _BudgetplanningState extends State<Budgetplanning> {
     });
   }
 }
+
+
