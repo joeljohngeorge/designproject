@@ -22,7 +22,14 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
   ];
   var _currentitemselected = 'Finance';
   final _expamtcon = TextEditingController();
+  final _datecon=TextEditingController();
+   final formKey = GlobalKey<FormState>(); 
 
+    void _submit() {
+     final form = formKey.currentState; 
+      if (form.validate()) {
+         form.save(); 
+          Navigator.pop(context); }}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +39,14 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
+              key: formKey,
                 child: Column(children: [
               TextFormField(
                 style: TextStyle(fontSize: 22),
                 decoration: const InputDecoration(
                     icon: const Icon(Icons.monetization_on),
                     labelText: 'Amount',
-                    labelStyle: TextStyle(fontSize: 18)),
+                    labelStyle: TextStyle(fontSize: 16)),
                 validator: (val) {
                   Pattern pattern = r'^[1-9]\d*(\.\d+)?$';
                   RegExp regex = new RegExp(pattern);
@@ -56,7 +64,7 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
                   icon: const Icon(Icons.calendar_today),
                   hintText: 'Enter date(yyyy-mm-dd)',
                   labelText: 'Date',
-                  labelStyle: TextStyle(fontSize: 18),
+                  labelStyle: TextStyle(fontSize: 16),
                 ),
                 validator: (val) {
                   Pattern pattern =
@@ -69,7 +77,10 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
                   }
                 },
                 keyboardType: TextInputType.datetime,
+                controller: _datecon,
+              
               ),
+              SizedBox(height: 10,),
               DropdownButton<String>(
                 items: _categories.map((String dropDownStringItem) {
                   return DropdownMenuItem<String>(
@@ -84,7 +95,9 @@ class _ExpenseaddpageState extends State<Expenseaddpage> {
               ),
               SizedBox(height: 20),
               RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _submit();
+                },
                 child: new Text('Submit'),
               )
             ]))));
