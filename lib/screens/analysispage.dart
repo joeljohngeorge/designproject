@@ -34,7 +34,7 @@ class _AnalysispageState extends State<Analysispage> {
         )),
         body: SingleChildScrollView(
           child: Container(
-            height: 600,
+            height: 2500,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -118,3 +118,4 @@ class _AnalysispageState extends State<Analysispage> {
     });
   }
 }
+
