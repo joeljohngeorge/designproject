@@ -7,7 +7,7 @@ class Billsplitaddpage extends StatefulWidget {
 
 class _BillsplitaddpageState extends State<Billsplitaddpage> {
   var _categories = [
-   'Food & Restaurants',
+    'Food & Restaurants',
     'Transportation',
     'Health',
     'Entertainment',
@@ -16,7 +16,13 @@ class _BillsplitaddpageState extends State<Billsplitaddpage> {
   ];
   var _currentitemselected = 'Entertainment';
   final _billamtcon = TextEditingController();
+  final formKey = GlobalKey<FormState>(); 
 
+    void _submit() {
+     final form = formKey.currentState; 
+      if (form.validate()) {
+         form.save(); 
+          Navigator.pop(context); }}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +32,14 @@ class _BillsplitaddpageState extends State<Billsplitaddpage> {
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
+              key: formKey,
                 child: Column(children: [
               TextFormField(
                 style: TextStyle(fontSize: 22),
                 decoration: const InputDecoration(
                     icon: const Icon(Icons.monetization_on),
                     labelText: ' Total Amount',
-                    labelStyle: TextStyle(fontSize: 18)),
+                    labelStyle: TextStyle(fontSize: 16)),
                 validator: (val) {
                   Pattern pattern = r'^[1-9]\d*(\.\d+)?$';
                   RegExp regex = new RegExp(pattern);
@@ -48,9 +55,8 @@ class _BillsplitaddpageState extends State<Billsplitaddpage> {
                 style: TextStyle(fontSize: 22),
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.group),
-                  hintText: 'Enter no.of persons',
-                  labelText: 'Friends',
-                  labelStyle: TextStyle(fontSize: 18),
+                  labelText: ' No.of Friends',
+                  labelStyle: TextStyle(fontSize: 16),
                 ),
                 validator: (val) {
                   Pattern pattern = r'^[1-9]\d*(\.\d+)?$';
@@ -75,10 +81,13 @@ class _BillsplitaddpageState extends State<Billsplitaddpage> {
                   _onDropDownItemSelected(newValueSelected);
                 },
                 value: _currentitemselected,
+                
               ),
               SizedBox(height: 20),
               RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _submit();
+                },
                 child: new Text('Submit'),
               )
             ]))));
@@ -90,3 +99,4 @@ class _BillsplitaddpageState extends State<Billsplitaddpage> {
     });
   }
 }
+
