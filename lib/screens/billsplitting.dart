@@ -25,37 +25,49 @@ class _BillsplittingState extends State<Billsplitting> {
           MaterialPageRoute(builder: (context) => Billsplitaddpage()),
         );
          }),
-       body:DataTable(
-      
-         columns: const <DataColumn>[
-       DataColumn(
-         label: Text(
-           'Category',
-           style: TextStyle(fontStyle: FontStyle.italic),
-         ),
-       ),
-       DataColumn(
-         label: Text(
-           'Total',
-           style: TextStyle(fontStyle: FontStyle.italic),
-         ),
-       ),
-       DataColumn(
-         label: Text(
-             'Friends',
-             style: TextStyle(fontStyle: FontStyle.italic),
+       body:SingleChildScrollView(
+                child: Container(
+                  height: 2000,
+                  width: MediaQuery.of(context).size.width,
+           child: DataTable(
+          columnSpacing: 24,
+             columns:  <DataColumn>[
+           DataColumn(
+             label: Text(
+               'Category',
+               style: TextStyle(fontStyle: FontStyle.italic),
+             ),
            ),
-       ),
-      
+           DataColumn(
+             label: Text(
+               'Total',
+               style: TextStyle(fontStyle: FontStyle.italic),
+             ),
+           ),
+           DataColumn(
+             label: Text(
+                 'Friends',
+                 style: TextStyle(fontStyle: FontStyle.italic),
+               ),
+           ),
+       DataColumn(
+             label: Text(
+                 'Amount/person',
+                 style: TextStyle(fontStyle: FontStyle.italic),
+               ),
+           ),
       ], 
       //Expected  data
-         rows: const <DataRow> [
-         DataRow(cells: [
-        DataCell(Text('Entertainment')),
-        DataCell(Text('1200')),
-        DataCell(Text('4')),
-        
-         ]),] )
+             rows:  <DataRow> [
+             DataRow(cells: [
+            DataCell(Text('Entertainment')),
+            DataCell(Text('1200')),
+            DataCell(Text('4')),
+             DataCell(Text('300')),
+            
+             ]),] ),
+         ),
+       )
          
     );
       
