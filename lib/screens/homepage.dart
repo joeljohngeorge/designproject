@@ -38,33 +38,33 @@ class _HomepageState extends State<Homepage> {
           child: Column(
             children: [
               Container(
-                height: 2000,
+                height: 3000,
                 width: MediaQuery.of(context).size.width,
                 child: DataTable(columns: <DataColumn>[
                   DataColumn(
                     label: Text(
-                      'Category',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      'Description',
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataColumn(
                     label: Text(
                       'Amount',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataColumn(
                     label: Text(
                       'Date',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
                     //Sample data
                     rows: <DataRow>[
                       DataRow(cells: [
-                        DataCell(Text('Finance')),
-                        DataCell(Text('3000')),
+                        DataCell(Text('Bank deposit')),
+                        DataCell(Text('2000')),
                         DataCell(Text('2020-10-31')),
                       ]),
                     ]),
