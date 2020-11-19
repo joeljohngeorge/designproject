@@ -12,7 +12,7 @@ class _EstimateaddpageState extends State<Estimateaddpage> {
     'Finance',
     'Education',
     'Groceries',
-    'Food & Restaurants',
+    'Food',
     'Health',
     'Entertainment',
     'Shopping',
