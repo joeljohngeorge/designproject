@@ -34,7 +34,7 @@ class _AnalysispageState extends State<Analysispage> {
         )),
         body: SingleChildScrollView(
           child: Container(
-            height: 2500,
+            height: 3500,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -54,20 +54,24 @@ class _AnalysispageState extends State<Analysispage> {
                 Center(
                     child: Text(
                   "Expected amount table",
-                  style: TextStyle(fontSize: 18,fontWeight:FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 )),
                 SizedBox(height: 10),
                 DataTable(columns: <DataColumn>[
                   DataColumn(
                     label: Text(
                       'Category',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataColumn(
                     label: Text(
                       'Amount',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -77,25 +81,72 @@ class _AnalysispageState extends State<Analysispage> {
                         DataCell(Text('Finance')),
                         DataCell(Text('3000')),
                       ]),
+                      DataRow(cells: [
+                        DataCell(Text('Education')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Groceries')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Food')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Transportation')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Health')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Entertainment')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Shopping')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Home')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Electricity bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Water bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Others')),
+                        DataCell(Text('0')),
+                      ]),
                     ]),
                 SizedBox(height: 25),
-                 Center(
-                    child: Text(
-                  "Actual amount table",
-                  style: TextStyle(fontSize: 18, fontWeight:FontWeight.bold)
-                )),
+                Center(
+                    child: Text("Actual amount table",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold))),
                 SizedBox(height: 10),
                 DataTable(columns: <DataColumn>[
                   DataColumn(
                     label: Text(
                       'Category',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataColumn(
                     label: Text(
                       'Amount',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -103,9 +154,68 @@ class _AnalysispageState extends State<Analysispage> {
                     rows: <DataRow>[
                       DataRow(cells: [
                         DataCell(Text('Finance')),
-                        DataCell(Text('3500')),
+                        DataCell(Text('2000')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Education')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Groceries')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Food')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Transportation')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Health')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Entertainment')),
+                        DataCell(Text('300')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Shopping')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Home')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Electricity bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Water bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Others')),
+                        DataCell(Text('0')),
                       ]),
                     ]),
+                SizedBox(height: 25),
+                DataTable(columns: <DataColumn>[
+                  DataColumn(
+                    label: Text(
+                      'Actual balance',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ], rows: <DataRow>[
+                  DataRow(cells: [
+                    DataCell(Text('27700')),
+                  ]),
+                ]),
               ],
             ),
           ),
@@ -118,4 +228,5 @@ class _AnalysispageState extends State<Analysispage> {
     });
   }
 }
+
 
