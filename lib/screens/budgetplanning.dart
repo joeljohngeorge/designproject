@@ -20,10 +20,10 @@ class _BudgetplanningState extends State<Budgetplanning> {
         )),
         body: SingleChildScrollView(
           child: Container(
-              height: 2000,
+              height: 3500,
               width: MediaQuery.of(context).size.width,
               child: Column(children: [
-                 SizedBox(height: 30),
+                SizedBox(height: 30),
                 Center(
                   child: RaisedButton(
                       onPressed: () {
@@ -55,14 +55,59 @@ class _BudgetplanningState extends State<Budgetplanning> {
                 DataTable(columns: <DataColumn>[
                   DataColumn(
                     label: Text(
+                      'Income',
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),
+                    ),
+                  ),
+                ], rows: <DataRow>[
+                  DataRow(cells: [
+                    DataCell(Text('30000')),
+                  ]),
+                ]),
+                 SizedBox(
+                  height: 30,
+                ),
+                 DataTable(columns: <DataColumn>[
+                  DataColumn(
+                    label: Text(
+                      'Expected balance',
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),
+                    ),
+                  ),
+                ], rows: <DataRow>[
+                  DataRow(cells: [
+                    DataCell(Text('25500')),
+                  ]),
+                ]),
+                 SizedBox(
+                  height: 30,
+                ),
+                 DataTable(columns: <DataColumn>[
+                  DataColumn(
+                    label: Text(
+                      'Savings',
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),
+                    ),
+                  ),
+                ], rows: <DataRow>[
+                  DataRow(cells: [
+                    DataCell(Text('3000')),
+                  ]),
+                ]),
+                 SizedBox(
+                  height: 30,
+                ),
+                DataTable(columns: <DataColumn>[
+                  DataColumn(
+                    label: Text(
                       'Category',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),
                     ),
                   ),
                   DataColumn(
                     label: Text(
                       'Percentage(%)',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      style: TextStyle(fontStyle: FontStyle.italic,fontWeight:FontWeight.bold),
                     ),
                   ),
                 ],
@@ -70,6 +115,54 @@ class _BudgetplanningState extends State<Budgetplanning> {
                     rows: <DataRow>[
                       DataRow(cells: [
                         DataCell(Text('Finance')),
+                        DataCell(Text('10')),
+                      ]),
+                       DataRow(cells: [
+                        DataCell(Text('Education')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Groceries')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Food')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Transportation')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Health')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Entertainment')),
+                        DataCell(Text('5')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Shopping')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Home')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Electricity bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Water bill')),
+                        DataCell(Text('0')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('Others')),
+                        DataCell(Text('0')),
+                      ]),
+                       DataRow(cells: [
+                        DataCell(Text('Savings')),
                         DataCell(Text('10')),
                       ]),
                     ]),
