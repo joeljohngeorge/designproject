@@ -7,7 +7,7 @@ class Billsplitaddpage extends StatefulWidget {
 
 class _BillsplitaddpageState extends State<Billsplitaddpage> {
   var _categories = [
-    'Food & Restaurants',
+    'Food',
     'Transportation',
     'Health',
     'Entertainment',
