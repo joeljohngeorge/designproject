@@ -1,7 +1,6 @@
 # expensemonitor
 
 A new Flutter project.<br>
-Under progress.<br> No hope, disappointing..<br> Errors and bad luck
 
 ## Getting Started
 
